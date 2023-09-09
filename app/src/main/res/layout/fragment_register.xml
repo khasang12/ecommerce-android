@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adapters.auth.RegisterFragment">
+    tools:context=".fragments.auth.RegisterFragment">
 
     <ImageView
         android:layout_width="match_parent"
@@ -132,7 +132,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_reg_email" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/button_regpage_register"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -147,15 +147,16 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="@+id/guideline_loginLeft"
             app:layout_constraintTop_toBottomOf="@+id/et_reg_password"
-            app:layout_constraintVertical_bias="0.235" />
+            app:layout_constraintVertical_bias="0.235"
+            app:spinning_bar_color="@color/white"/>
 
         <ImageView
             android:id="@+id/iv_reg_fb"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_facebook_login"
-            app:layout_constraintStart_toStartOf="@+id/button_regpage_register"
+            app:layout_constraintStart_toStartOf="@+id/guideline_loginLeft"
             app:layout_constraintTop_toBottomOf="@+id/button_regpage_register" />
         <TextView
             android:layout_width="wrap_content"
@@ -168,13 +169,11 @@
 
         <ImageView
             android:id="@+id/iv_reg_gg"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_google_login"
-            app:layout_constraintEnd_toEndOf="@+id/button_regpage_register"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/iv_reg_fb"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2_loginRight"
             app:layout_constraintTop_toBottomOf="@+id/button_regpage_register" />
 
         <TextView

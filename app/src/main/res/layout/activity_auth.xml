@@ -4,97 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adapters.auth.AccountFragment">
+    tools:context=".activities.AuthActivity">
 
-    <ImageView
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/secondscreen_background"
-        />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/tv_app_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_100sdp"
-            android:drawableLeft="@drawable/ic_kleine_shape"
-            android:drawablePadding="@dimen/_6sdp"
-            android:fontFamily="@font/sf_pro_display"
-            android:text="Kleine"
-            android:textColor="@color/g_black"
-            android:textSize="@dimen/_20sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_acc_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:gravity="center"
-            android:text="@string/intro1"
-            android:textColor="@color/g_black"
-            android:textSize="@dimen/_25sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_app_name" />
-
-        <TextView
-            android:id="@+id/textView"
-            style="@style/SmallTextViewThin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/intro1_desc"
-            android:textAlignment="center"
-            android:fontFamily="@font/poppins"
-            android:textSize="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_acc_title" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_login"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_background"
-            android:padding="@dimen/_10sdp"
-            android:text="Login"
-            android:textColor="@color/g_white"
-            android:textSize="@dimen/_12sdp"
-            android:stateListAnimator="@animator/button_state_list_anim_material"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.371" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_register"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_white_background"
-            android:padding="@dimen/_10sdp"
-            android:stateListAnimator="@animator/button_state_list_anim_material"
-            android:text="Register"
-            android:textColor="@color/g_dark_blue"
-            android:textSize="@dimen/_12sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_login"
-            app:layout_constraintVertical_bias="0.18" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/auth_graph" />
 </FrameLayout>

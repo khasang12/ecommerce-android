@@ -1,4 +1,4 @@
-package com.example.ecommerce_app.adapters.auth
+package com.example.ecommerce_app.fragments.auth
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
