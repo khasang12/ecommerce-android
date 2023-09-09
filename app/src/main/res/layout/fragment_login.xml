@@ -58,7 +58,7 @@
 
 
         <TextView
-            android:id="@+id/tv_login_register"
+            android:id="@+id/tv_reg_login"
             style="@style/SmallTextViewThin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
             app:layout_constraintStart_toEndOf="@+id/tv_no_account" />
 
         <EditText
-            android:id="@+id/et_login_email"
+            android:id="@+id/et_reg_email"
             style="@style/EditTextSettings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_no_account" />
 
         <EditText
-            android:id="@+id/et_password_email"
+            android:id="@+id/et_reg_password"
             style="@style/EditTextSettings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline2_loginRight"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/tv_no_account"
-            app:layout_constraintTop_toBottomOf="@+id/et_login_email" />
+            app:layout_constraintTop_toBottomOf="@+id/et_reg_email" />
 
         <TextView
             android:id="@+id/tv_forget"
@@ -112,7 +112,7 @@
             android:text="Forgot Password"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toStartOf="@+id/guideline_loginLeft"
-            app:layout_constraintTop_toBottomOf="@+id/et_password_email" />
+            app:layout_constraintTop_toBottomOf="@+id/et_reg_password" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -126,10 +126,10 @@
             android:textColor="@color/g_white"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/et_login_email"
+            app:layout_constraintEnd_toEndOf="@+id/et_reg_email"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="@+id/guideline_loginLeft"
-            app:layout_constraintTop_toBottomOf="@+id/et_password_email"
+            app:layout_constraintTop_toBottomOf="@+id/et_reg_password"
             app:layout_constraintVertical_bias="0.235" />
 
         <ImageView
@@ -153,12 +153,13 @@
             android:id="@+id/iv_login_gg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_google_login"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2_loginRight"
-            app:layout_constraintStart_toStartOf="@+id/tv_forget"
+            app:layout_constraintEnd_toEndOf="@+id/button_loginpage_login"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/iv_login_fb"
             app:layout_constraintTop_toBottomOf="@+id/button_loginpage_login" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
