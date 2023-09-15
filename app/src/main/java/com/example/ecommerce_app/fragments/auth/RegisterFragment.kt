@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.ecommerce_app.R
 import com.example.ecommerce_app.data.User
 import com.example.ecommerce_app.databinding.FragmentRegisterBinding
 import com.example.ecommerce_app.utils.RegisterValidation
@@ -41,6 +43,10 @@ class RegisterFragment : Fragment() {
         launchProgressCoroutine()
         onRegisterClick()
         onValidationHandle()
+
+        binding.tvRegLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
     }
 
     private fun onValidationHandle() {

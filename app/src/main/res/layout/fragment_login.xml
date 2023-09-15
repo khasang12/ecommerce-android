@@ -66,6 +66,7 @@
             android:fontFamily="@font/poppins"
             android:text="Register"
             android:textSize="@dimen/_14sdp"
+            android:textColor="@color/g_dark_blue"
             app:layout_constraintBottom_toBottomOf="@+id/tv_no_account"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_loginRight"
             app:layout_constraintHorizontal_bias="0.125"
@@ -127,15 +128,15 @@
             android:textSize="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/et_reg_email"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline_loginLeft"
             app:layout_constraintTop_toBottomOf="@+id/et_reg_password"
-            app:layout_constraintVertical_bias="0.235"
-            app:spinning_bar_color="@color/white"/>
+            app:layout_constraintVertical_bias="0.239"
+            app:spinning_bar_color="@color/white" />
 
         <ImageView
-            android:id="@+id/iv_login_fb"
-            android:layout_width="wrap_content"
+            android:id="@+id/iv_reg_fb"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_facebook_login"
@@ -145,14 +146,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Facebook"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_login_fb"
-            app:layout_constraintEnd_toEndOf="@+id/iv_login_fb"
-            app:layout_constraintStart_toStartOf="@+id/iv_login_fb"
-            app:layout_constraintTop_toTopOf="@+id/iv_login_fb" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_reg_fb"
+            app:layout_constraintEnd_toEndOf="@+id/iv_reg_fb"
+            app:layout_constraintStart_toStartOf="@+id/iv_reg_fb"
+            app:layout_constraintTop_toTopOf="@+id/iv_reg_fb" />
 
         <ImageView
-            android:id="@+id/iv_login_gg"
-            android:layout_width="wrap_content"
+            android:id="@+id/iv_reg_gg"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:src="@drawable/ic_google_login"
@@ -163,10 +164,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Google"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_login_gg"
-            app:layout_constraintEnd_toEndOf="@+id/iv_login_gg"
-            app:layout_constraintStart_toStartOf="@+id/iv_login_gg"
-            app:layout_constraintTop_toTopOf="@+id/iv_login_gg" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_reg_gg"
+            app:layout_constraintEnd_toEndOf="@+id/iv_reg_gg"
+            app:layout_constraintStart_toStartOf="@+id/iv_reg_gg"
+            app:layout_constraintTop_toTopOf="@+id/iv_reg_gg" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_loginLeft"
