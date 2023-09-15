@@ -10,11 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.ecommerce_app.data.User
 import com.example.ecommerce_app.databinding.FragmentRegisterBinding
+import com.example.ecommerce_app.utils.RegisterValidation
 import com.example.ecommerce_app.utils.Resource
 import com.example.ecommerce_app.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
@@ -37,6 +40,30 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         launchProgressCoroutine()
         onRegisterClick()
+        onValidationHandle()
+    }
+
+    private fun onValidationHandle() {
+        lifecycleScope.launch {
+            viewModel.validation.collect{ validation->
+                if(validation.email is RegisterValidation.Failed){
+                    withContext(Dispatchers.Main){
+                        binding.etRegEmail.apply{
+                            requestFocus()
+                            error = validation.email.msg
+                        }
+                    }
+                }
+                if(validation.password is RegisterValidation.Failed){
+                    withContext(Dispatchers.Main){
+                        binding.etRegPassword.apply{
+                            requestFocus()
+                            error = validation.password.msg
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private fun launchProgressCoroutine() {
