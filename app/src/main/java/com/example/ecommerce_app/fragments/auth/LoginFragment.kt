@@ -13,8 +13,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.ecommerce_app.R
 import com.example.ecommerce_app.activities.ShopActivity
 import com.example.ecommerce_app.databinding.FragmentLoginBinding
+import com.example.ecommerce_app.dialog.setupBottomSheetDialog
 import com.example.ecommerce_app.utils.Resource
 import com.example.ecommerce_app.viewmodel.LoginViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -42,6 +44,28 @@ class LoginFragment : Fragment() {
 
         binding.tvRegLogin.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+
+        binding.tvForget.setOnClickListener{
+            setupBottomSheetDialog { email ->
+                viewModel.resetPassword(email)
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.resetPassword.collect{
+                when(it){
+                    is Resource.Loading -> {
+                    }
+                    is Resource.Success -> {
+                        Snackbar.make(requireView(),"Reset link was sent to your email",Snackbar.LENGTH_LONG).show()
+                    }
+                    is Resource.Error -> {
+                        Snackbar.make(requireView(),"Error: ${it.msg}",Snackbar.LENGTH_LONG).show()
+                    }
+                    else -> {}
+                }
+            }
         }
 
         lifecycleScope.launch{
