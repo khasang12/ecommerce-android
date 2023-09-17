@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="intro1">The Right Address \n For Shopping \n Anyday</string>
     <string name="intro1_desc">Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.</string>
+    <string name="g_see_product">View Product</string>
+    <string name="g_add_to_cart">Add to Cart</string>
 </resources>
