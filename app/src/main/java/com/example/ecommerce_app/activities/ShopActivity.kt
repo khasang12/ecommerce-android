@@ -10,7 +10,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.ecommerce_app.R
 import com.example.ecommerce_app.databinding.ActivityShopBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ShopActivity : AppCompatActivity() {
     val binding by lazy {
         ActivityShopBinding.inflate(layoutInflater)
