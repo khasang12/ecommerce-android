@@ -18,8 +18,52 @@ class MainCategoryViewModel @Inject constructor(
     private val _specialProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
     val specialProducts: StateFlow<Resource<List<Product>>> = _specialProducts
 
+    private val _bestProducts = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
+    val bestProducts: StateFlow<Resource<List<Product>>> = _bestProducts
+
+    private val _bestDeals = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
+    val bestDeals: StateFlow<Resource<List<Product>>> = _bestDeals
+
     init {
         fetchSpecialProducts()
+        fetchBestProducts()
+        fetchBestDeals()
+    }
+
+    private fun fetchBestProducts() {
+        viewModelScope.launch{
+            _bestProducts.emit(Resource.Loading())
+        }
+        firestore
+            .collection("Products")
+            .whereEqualTo("category","Special Products").get().addOnSuccessListener { result->
+                val bestProductList = result.toObjects(Product::class.java)
+                viewModelScope.launch {
+                    _bestProducts.emit(Resource.Success(bestProductList))
+                }
+            }.addOnFailureListener {
+                viewModelScope.launch {
+                    _bestProducts.emit(Resource.Error(it.message.toString()))
+                }
+            }
+    }
+
+    private fun fetchBestDeals() {
+        viewModelScope.launch{
+            _bestDeals.emit(Resource.Loading())
+        }
+        firestore
+            .collection("Products")
+            .whereEqualTo("category","Best Deals").get().addOnSuccessListener { result->
+                val bestProductList = result.toObjects(Product::class.java)
+                viewModelScope.launch {
+                    _bestDeals.emit(Resource.Success(bestProductList))
+                }
+            }.addOnFailureListener {
+                viewModelScope.launch {
+                    _bestDeals.emit(Resource.Error(it.message.toString()))
+                }
+            }
     }
 
     private fun fetchSpecialProducts(){
