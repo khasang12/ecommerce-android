@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:background="@color/g_card_background"
     app:elevation="0dp"
-
+    app:cardCornerRadius="@dimen/_5sdp"
+    app:cardBackgroundColor="@color/g_card_background"
+    app:cardUseCompatPadding="true"
     >
 
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -73,11 +74,11 @@ class MainCategoryFragment: Fragment() {
             viewModel.bestProducts.collectLatest {
                 when(it){
                     is Resource.Loading -> {
-                        showLoading()
+                        binding.pagingProgressbar.visibility = View.VISIBLE
                     }
                     is Resource.Success -> {
                         bestProductsAdapter.differ.submitList(it.data)
-                        hideLoading()
+                        binding.pagingProgressbar.visibility = View.GONE
                     }
                     is Resource.Error -> {
                         hideLoading()
@@ -109,6 +110,13 @@ class MainCategoryFragment: Fragment() {
 
             }
         }
+
+        binding.nestedScrollMainCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{v,_,scrollY,_,_->
+            // check if reach bottom
+            if(v.getChildAt(0).bottom <= v.height*scrollY){
+                viewModel.fetchBestProducts()
+            }
+        })
     }
 
     private fun setupBestDealsRv() {

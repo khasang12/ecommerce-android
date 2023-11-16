@@ -24,28 +24,36 @@ class MainCategoryViewModel @Inject constructor(
     private val _bestDeals = MutableStateFlow<Resource<List<Product>>>(Resource.Unspecified())
     val bestDeals: StateFlow<Resource<List<Product>>> = _bestDeals
 
+    private val pagingInfo = PagingInfo()
+
     init {
         fetchSpecialProducts()
         fetchBestProducts()
         fetchBestDeals()
     }
 
-    private fun fetchBestProducts() {
-        viewModelScope.launch{
-            _bestProducts.emit(Resource.Loading())
-        }
-        firestore
-            .collection("Products")
-            .whereEqualTo("category","Special Products").get().addOnSuccessListener { result->
-                val bestProductList = result.toObjects(Product::class.java)
-                viewModelScope.launch {
-                    _bestProducts.emit(Resource.Success(bestProductList))
-                }
-            }.addOnFailureListener {
-                viewModelScope.launch {
-                    _bestProducts.emit(Resource.Error(it.message.toString()))
-                }
+    public fun fetchBestProducts() {
+        if(!pagingInfo.isPagingEnd) {
+            viewModelScope.launch {
+                _bestProducts.emit(Resource.Loading())
+                firestore
+                    .collection("Products")
+                    .limit(10 * pagingInfo.bestProductsPage)
+                    .get().addOnSuccessListener { result ->
+                        val bestProductList = result.toObjects(Product::class.java)
+                        pagingInfo.isPagingEnd = bestProductList == pagingInfo.oldBestProducts
+                        pagingInfo.oldBestProducts = bestProductList
+                        viewModelScope.launch {
+                            _bestProducts.emit(Resource.Success(bestProductList))
+                        }
+                        pagingInfo.bestProductsPage++
+                    }.addOnFailureListener {
+                        viewModelScope.launch {
+                            _bestProducts.emit(Resource.Error(it.message.toString()))
+                        }
+                    }
             }
+        }
     }
 
     private fun fetchBestDeals() {
@@ -84,3 +92,9 @@ class MainCategoryViewModel @Inject constructor(
             }
     }
 }
+
+internal data class PagingInfo(
+    var bestProductsPage: Long = 1,
+    var oldBestProducts: List<Product> = emptyList(),
+    var isPagingEnd: Boolean = false
+)

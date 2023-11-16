@@ -1,84 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/g_card_background"
     android:elevation="0dp"
+    app:cardCornerRadius="@dimen/_5sdp"
+    app:cardBackgroundColor="@color/g_card_background"
+    app:cardUseCompatPadding="true"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/_88sdp">
 
         <ImageView
             android:id="@+id/img_best_deal"
             android:layout_width="@dimen/_64sdp"
             android:layout_height="@dimen/_64sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:src="@drawable/test_image" />
+            android:src="@drawable/test_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_deal_product_name"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
-            android:text="Scotch Premium"
-            app:layout_constraintStart_toEndOf="@id/img_best_deal"
-            app:layout_constraintTop_toTopOf="@id/img_best_deal"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginStart="@dimen/_11sdp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins_light"
-            android:textStyle="bold"
+            android:text="Scotch Premium"
             android:textColor="@color/black"
-            android:textSize="@dimen/_9ssp"/>
+            android:textSize="@dimen/_9ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/img_best_deal"
+            app:layout_constraintTop_toTopOf="@id/img_best_deal" />
 
         <TextView
             android:id="@+id/tv_old_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:fontFamily="@font/sf_pro_display"
             android:text="$2000"
-            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
-            app:layout_constraintStart_toEndOf="@id/tv_new_price"
             android:textColor="@color/g_hint"
             android:textSize="@dimen/_12ssp"
-            android:fontFamily="@font/sf_pro_display"
-            android:layout_marginStart="@dimen/_8sdp"
-            />
+            app:layout_constraintStart_toEndOf="@id/tv_new_price"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name" />
 
         <TextView
             android:id="@+id/tv_new_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_display"
             android:text="$1600"
-            app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
-
             android:textColor="@color/black"
+
             android:textSize="@dimen/_12ssp"
-            android:fontFamily="@font/sf_pro_display"/>
+            app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name" />
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/btn_see_product"
             android:layout_width="@dimen/_83sdp"
             android:layout_height="@dimen/_28sdp"
+            android:layout_marginStart="@dimen/_20sdp"
             android:background="@drawable/btn_background"
             android:fontFamily="@font/poppins_light"
             android:text="@string/g_see_product"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/tv_deal_product_name"
-            app:layout_constraintTop_toTopOf="@id/tv_deal_product_name"
-            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="@dimen/_20sdp"
 
-            />
-
-
+            app:layout_constraintHorizontal_bias="0.081"
+            app:layout_constraintStart_toEndOf="@id/tv_deal_product_name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
