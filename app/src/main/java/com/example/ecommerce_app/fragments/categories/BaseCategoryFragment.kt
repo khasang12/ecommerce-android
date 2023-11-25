@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,16 @@ open class BaseCategoryFragment: Fragment(R.layout.fragment_base_category) {
 
         setupOfferRv()
         setupBestProductsRv()
+
+        offerAdapter.onClick = {
+            val b = Bundle().apply {putParcelable("product", it)}
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment, b)
+        }
+
+        bestProductsAdapter.onClick = {
+            val b = Bundle().apply {putParcelable("product", it)}
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment, b)
+        }
 
         binding.rvOffer.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

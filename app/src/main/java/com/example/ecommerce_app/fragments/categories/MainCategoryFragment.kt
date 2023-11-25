@@ -12,13 +12,16 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ecommerce_app.R
 import com.example.ecommerce_app.adapters.BestDealsAdapter
 import com.example.ecommerce_app.adapters.BestProductsAdapter
 import com.example.ecommerce_app.adapters.SpecialProductAdapter
 import com.example.ecommerce_app.databinding.FragmentMainCategoryBinding
 import com.example.ecommerce_app.utils.Resource
+import com.example.ecommerce_app.utils.showBottomNavigationView
 import com.example.ecommerce_app.viewmodel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -50,6 +53,22 @@ class MainCategoryFragment: Fragment() {
         setupSpecialProductRv()
         setupBestDealsRv()
         setupBestProductsRv()
+
+        specialProductAdapter.onClick = {
+            val b = Bundle().apply {putParcelable("product", it)}
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment, b)
+        }
+
+        bestProductsAdapter.onClick = {
+            val b = Bundle().apply {putParcelable("product", it)}
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment, b)
+        }
+
+        bestDealsAdapter.onClick = {
+            val b = Bundle().apply {putParcelable("product", it)}
+            findNavController().navigate(R.id.action_homeFragment_to_productDetailFragment, b)
+        }
+
         lifecycleScope.launchWhenStarted {
             viewModel.specialProducts.collectLatest {
                 when(it){
@@ -149,5 +168,10 @@ class MainCategoryFragment: Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = specialProductAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showBottomNavigationView()
     }
 }
