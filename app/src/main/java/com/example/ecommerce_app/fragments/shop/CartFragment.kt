@@ -1,60 +1,149 @@
 package com.example.ecommerce_app.fragments.shop
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerce_app.R
+import com.example.ecommerce_app.adapters.CartProductAdapter
+import com.example.ecommerce_app.data.CartProduct
+import com.example.ecommerce_app.databinding.FragmentCartBinding
+import com.example.ecommerce_app.firebase.FirebaseCommon
+import com.example.ecommerce_app.utils.Resource
+import com.example.ecommerce_app.utils.VerticalItemDecoration
+import com.example.ecommerce_app.viewmodel.CartViewModel
+import kotlinx.coroutines.flow.collectLatest
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class CartFragment : Fragment(R.layout.fragment_cart) {
+    private lateinit var binding: FragmentCartBinding
+    private val cartAdapter by lazy { CartProductAdapter() }
+    private val viewModel by activityViewModels<CartViewModel>()// call from activity
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CartFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class CartFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentCartBinding.inflate(inflater)
+        return binding.root
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupCartRv()
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.productsPrice.collectLatest { price ->
+                price?.let{
+                    binding.tvTotalPrice.text = "$ $price"
+                }
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.cartProducts.collectLatest {
+                when(it){
+                    is Resource.Success->{
+                        binding.progressCart.visibility = View.INVISIBLE
+                        if(it.data!!.isEmpty()) {
+                            showEmptyCart()
+                            hideOtherViews()
+                        }
+                        else{
+                            hideEmptyCart()
+                            showOtherViews()
+                            cartAdapter.differ.submitList(it.data)
+                        }
+                    }
+                    is Resource.Loading->{
+                        binding.progressCart.visibility = View.VISIBLE
+                    }
+                    is Resource.Error->{
+                        binding.progressCart.visibility = View.INVISIBLE
+                        Toast.makeText(requireContext(),it.msg.toString(),Toast.LENGTH_SHORT).show()
+                    }
+                    else->Unit
+                }
+            }
+        }
+
+        cartAdapter.onProductClick = {
+            val b = Bundle().apply {putParcelable("product",it.product)}
+            findNavController().navigate(R.id.action_cartFragment_to_productDetailFragment, b)
+        }
+
+        cartAdapter.onPlusClick = {
+            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.INCREASE)
+        }
+
+        cartAdapter.onMinusClick = {
+            viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.deleteDialog.collectLatest {
+                val alertDialog = AlertDialog.Builder(requireContext()).apply{
+                    setTitle("Delete item from Cart")
+                    setMessage("Do you want to delete this item?")
+                    setNegativeButton("Cancel"){ dialog,_ ->
+                        dialog.dismiss()
+                    }
+                    setPositiveButton("Yes"){ dialog,_ ->
+                        viewModel.deleteCartProduct(it)
+                        dialog.dismiss()
+                    }
+                }
+                alertDialog.create()
+                alertDialog.show()
+            }
+        }
+
+        binding.ivCloseCart.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false)
+    private fun hideOtherViews() {
+        binding.apply {
+            rvCart.visibility = View.GONE
+            totalBoxContainer.visibility = View.GONE
+            buttonAddToCart.visibility = View.GONE
+        }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CartFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CartFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun showOtherViews() {
+        binding.apply {
+            rvCart.visibility = View.VISIBLE
+            totalBoxContainer.visibility = View.VISIBLE
+            buttonAddToCart.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideEmptyCart() {
+        binding.apply {
+            layoutCartEmpty.visibility = View.GONE
+        }
+    }
+
+    private fun showEmptyCart() {
+        binding.apply {
+            layoutCartEmpty.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setupCartRv() {
+        binding.rvCart.apply{
+            layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL, false)
+            adapter = cartAdapter
+            addItemDecoration(VerticalItemDecoration())
+        }
     }
 }

@@ -6,4 +6,13 @@
     <string name="intro1_desc">Lorem ipsum dolor sit amet,\n consectetur adipiscing elit.</string>
     <string name="g_see_product">View Product</string>
     <string name="g_add_to_cart">Add to Cart</string>
+    <string name="g_save">Save</string>
+    <string name="g_delete">Delete</string>
+    <string name="g_address">Address</string>
+    <string name="g_address_location_ie_home">Home</string>
+    <string name="g_full_name">Full name</string>
+    <string name="street">Street</string>
+    <string name="g_city">City</string>
+    <string name="g_state">State</string>
+    <string name="g_phone">Phone</string>
 </resources>

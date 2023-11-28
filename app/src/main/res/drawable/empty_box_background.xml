@@ -5,7 +5,7 @@
         android:type="linear"
         android:startColor="#00FF0000"
         android:endColor="#00FF0000"
-        android:gradientRadius="@dimen/_20sdp" />
+        android:gradientRadius="20dp" />
 
 
 </shape>
