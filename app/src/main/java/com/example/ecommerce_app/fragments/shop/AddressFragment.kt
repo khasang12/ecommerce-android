@@ -1,6 +1,7 @@
 package com.example.ecommerce_app.fragments.shop
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,6 @@ class AddressFragment: Fragment(R.layout.fragment_address) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         lifecycleScope.launchWhenStarted {
             viewModel.addNewAddress.collectLatest {
                 when(it){
@@ -33,6 +33,7 @@ class AddressFragment: Fragment(R.layout.fragment_address) {
                     }
                     is Resource.Success -> {
                         binding.progressbarAddress.visibility = View.INVISIBLE
+                        Log.d("address","cccr")
                         findNavController().navigateUp()
                     }
                     is Resource.Error -> {
@@ -70,8 +71,12 @@ class AddressFragment: Fragment(R.layout.fragment_address) {
                 val state = edState.text.toString()
                 val phone = edPhone.text.toString()
                 val city = edCity.text.toString()
-                val address = Address(addressTitle,fullName,street,phone,city,state)
+                val address = Address(addressTitle, fullName, street, phone, city, state)
                 viewModel.addAddress(address)
+            }
+
+            imgAddressClose.setOnClickListener {
+                findNavController().navigateUp()
             }
         }
     }
