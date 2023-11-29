@@ -194,8 +194,8 @@
                 app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_place_older"
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btn_place_order"
             android:layout_width="0dp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginHorizontal="@dimen/_15sdp"
@@ -218,10 +218,10 @@
             android:layout_height="wrap_content"
             android:indeterminateTint="@color/g_hint"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@id/btn_place_older"
-            app:layout_constraintStart_toStartOf="@id/btn_place_older"
-            app:layout_constraintTop_toBottomOf="@id/btn_place_older"
-            app:layout_constraintTop_toTopOf="@id/btn_place_older" />
+            app:layout_constraintEnd_toEndOf="@id/btn_place_order"
+            app:layout_constraintStart_toStartOf="@id/btn_place_order"
+            app:layout_constraintTop_toBottomOf="@id/btn_place_order"
+            app:layout_constraintTop_toTopOf="@id/btn_place_order" />
 
         <TextView
             android:id="@+id/tv_select_address_error"
