@@ -46,6 +46,6 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun logout() {
-        TODO("Not yet implemented")
+        auth.signOut()
     }
 }

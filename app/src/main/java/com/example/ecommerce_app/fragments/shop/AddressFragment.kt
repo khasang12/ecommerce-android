@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.ecommerce_app.R
 import com.example.ecommerce_app.data.Address
 import com.example.ecommerce_app.databinding.FragmentAddressBinding
@@ -22,6 +23,7 @@ import kotlinx.coroutines.flow.collectLatest
 class AddressFragment: Fragment(R.layout.fragment_address) {
     private lateinit var binding: FragmentAddressBinding
     val viewModel by viewModels<AddressViewModel>()
+    val args by navArgs<AddressFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,6 @@ class AddressFragment: Fragment(R.layout.fragment_address) {
                     }
                     is Resource.Success -> {
                         binding.progressbarAddress.visibility = View.INVISIBLE
-                        Log.d("address","cccr")
                         findNavController().navigateUp()
                     }
                     is Resource.Error -> {
@@ -62,7 +63,7 @@ class AddressFragment: Fragment(R.layout.fragment_address) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val address = args.address
         binding.apply {
             btnAddNewAddress.setOnClickListener {
                 val addressTitle = edAddressTitle.text.toString()
@@ -71,8 +72,8 @@ class AddressFragment: Fragment(R.layout.fragment_address) {
                 val state = edState.text.toString()
                 val phone = edPhone.text.toString()
                 val city = edCity.text.toString()
-                val address = Address(addressTitle, fullName, street, phone, city, state)
-                viewModel.addAddress(address)
+                val addr = Address(addressTitle, fullName, street, phone, city, state)
+                viewModel.addAddress(addr)
             }
 
             imgAddressClose.setOnClickListener {

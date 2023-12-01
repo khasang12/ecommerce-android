@@ -92,11 +92,10 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         }
 
         binding.buttonAddToCart.setOnClickListener {
-//            val action = CartFragmentDirections.actionCartFragmentToBillingFragment(totalPrice, cartAdapter.differ.currentList.toTypedArray())
-//            findNavController().navigate(action)
             val b = Bundle().apply {
                 putParcelableArray("products",cartAdapter.differ.currentList.toTypedArray())
                 putString("totalPrice",totalPrice)
+                putBoolean("payment",true)
             }
             findNavController().navigate(R.id.action_cartFragment_to_billingFragment, b)
         }

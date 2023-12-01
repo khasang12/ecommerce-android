@@ -99,6 +99,7 @@
         android:fontFamily="@font/poppins_light"
         android:textColor="@color/black"
         android:gravity="center"
+        android:layout_marginTop="@dimen/_50sdp"
         app:layout_constraintTop_toBottomOf="@id/img_empty_box_texture"
         app:layout_constraintStart_toStartOf="@id/img_empty_box_texture"
         app:layout_constraintEnd_toEndOf="@id/img_empty_box_texture"

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,11 +35,7 @@ class OrderDetailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val order = args.order
 
-        binding.rvProducts.apply {
-            adapter = billingAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            addItemDecoration(VerticalItemDecoration())
-        }
+        setupOrderDetailRv()
 
         binding.apply {
             tvOrderId.text = "Order #${order.orderId}"
@@ -46,6 +43,10 @@ class OrderDetailFragment: Fragment() {
             tvAddress.text= "${order.address.street} ${order.address.city}"
             tvPhoneNumber.text = order.address.phone
             tvTotalprice.text = "$ ${order.totalPrice}"
+
+            imgCloseOrder.setOnClickListener {
+                findNavController().navigateUp()
+            }
 
             stepView.setSteps(
                 mutableListOf(
@@ -68,5 +69,13 @@ class OrderDetailFragment: Fragment() {
             }
         }
         billingAdapter.differ.submitList(order.products)
+    }
+
+    private fun setupOrderDetailRv() {
+        binding.rvProducts.apply {
+            adapter = billingAdapter
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            addItemDecoration(VerticalItemDecoration())
+        }
     }
 }

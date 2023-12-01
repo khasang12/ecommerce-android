@@ -63,6 +63,15 @@ class BillingFragment: Fragment() {
         setupBillingProductRv()
         setupAddressRv()
 
+        if(!args.payment){
+            binding.apply {
+                btnPlaceOrder.visibility = View.INVISIBLE
+                totalBoxContainer.visibility = View.INVISIBLE
+                line.visibility = View.INVISIBLE
+                line2.visibility = View.INVISIBLE
+            }
+        }
+
         binding.imgAddAddress.setOnClickListener {
             findNavController().navigate(R.id.action_billingFragment_to_addressFragment)
         }
@@ -115,6 +124,10 @@ class BillingFragment: Fragment() {
 
         addressAdapter.onClick = {
             selectedAddress = it
+            val b = Bundle().apply{
+                putParcelable("address",selectedAddress)
+            }
+            findNavController().navigate(R.id.action_billingFragment_to_addressFragment, b)
         }
 
         binding.btnPlaceOrder.setOnClickListener {
