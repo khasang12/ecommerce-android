@@ -124,10 +124,12 @@ class BillingFragment: Fragment() {
 
         addressAdapter.onClick = {
             selectedAddress = it
-            val b = Bundle().apply{
-                putParcelable("address",selectedAddress)
+            if(!args.payment){
+                val b = Bundle().apply{
+                    putParcelable("address",selectedAddress)
+                }
+                findNavController().navigate(R.id.action_billingFragment_to_addressFragment, b)
             }
-            findNavController().navigate(R.id.action_billingFragment_to_addressFragment, b)
         }
 
         binding.btnPlaceOrder.setOnClickListener {

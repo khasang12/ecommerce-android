@@ -64,6 +64,17 @@ class AddressFragment: Fragment(R.layout.fragment_address) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val address = args.address
+        if(address != null){
+            binding.apply {
+                edAddressTitle.hint = address.addressTitle.toString()
+                edFullName.hint = address.fullName.toString()
+                edStreet.hint = address.street.toString()
+                edPhone.hint = address.phone.toString()
+                edCity.hint = address.city.toString()
+                edState.hint = address.state.toString()
+            }
+        }
+
         binding.apply {
             btnAddNewAddress.setOnClickListener {
                 val addressTitle = edAddressTitle.text.toString()

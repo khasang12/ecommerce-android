@@ -25,7 +25,7 @@
             android:drawableLeft="@drawable/ic_kleine_shape"
             android:drawablePadding="@dimen/_6sdp"
             android:fontFamily="@font/sf_pro_display"
-            android:text="Kleine"
+            android:text="SaKa"
             android:textColor="@color/g_black"
             android:textSize="@dimen/_20sdp"
             android:textStyle="bold"

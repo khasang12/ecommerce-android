@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">kleine</string>
-    <string name="g_app_name">kleine.</string>
+    <string name="app_name">SaKa</string>
+    <string name="g_app_name">SaKa.</string>
     <string name="g_the_right_address">The Right Address \n For Shopping \n Anyday</string>
 
     <!--    <string name="g_for_shopping">For Shopping</string>-->
@@ -63,7 +63,7 @@
     <string name="g_categories">Categories</string>
     <string name="g_cancel">Cancel</string>
     <string name="g_payment_methods">Payment methods</string>
-    <string name="payment_explanation">Currently Keline only supports payments when receiving the product, more options are coming soon.</string>
+    <string name="payment_explanation">Currently SaKa only supports payments when receiving the product, more options are coming soon.</string>
     <string name="g_shipping">Shipping</string>
     <string name="g_full_name">Full Name</string>
     <string name="g_city">City</string>
