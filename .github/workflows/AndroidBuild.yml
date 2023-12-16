@@ -83,6 +83,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-debug
+      - name: Debug
+        run: |
+          ls -al app-debug
       - name: Create new release
         uses: softprops/action-gh-release@v1
         env:
