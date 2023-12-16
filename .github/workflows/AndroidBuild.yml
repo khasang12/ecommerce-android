@@ -38,16 +38,16 @@ jobs:
   release:
     name: Release Project
     runs-on: ubuntu-latest
-    needs: build-project
+    needs: build
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: SaKa.apk
-      - name: Archive site content
-        uses: thedoctor0/zip-release@master
-        with:
-          filename: SaKa.zip
+#      - name: Archive site content
+#        uses: thedoctor0/zip-release@master
+#        with:
+#          filename: SaKa.zip
       - name: Create GitHub release
         uses: actions/create-release@v1
         env:
@@ -55,3 +55,12 @@ jobs:
         with:
           tag_name: ${{ github.run_number }}
           release_name: Release ${{ github.run_number }}
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+          asset_path: ./SaKa.apk
+          asset_name: SaKa-v${{ github.run_number }}.apk
+          asset_content_type: application/apk
