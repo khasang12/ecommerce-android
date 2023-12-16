@@ -80,6 +80,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Download app APK
+        uses: actions/download-artifact@v4
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Create new release
         uses: softprops/action-gh-release@v1
         env:

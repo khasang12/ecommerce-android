@@ -7,11 +7,3 @@ android-pixel-4:
       version: 30
       locale: 'en'
       orientation: portrait
-    - model: x1q
-      version: 29
-      locale: 'en'
-      orientation: portrait
-    - model: crownlte
-      version: 28
-      locale: 'en'
-      orientation: portrait
