@@ -40,7 +40,7 @@ class UserAccountViewModel @Inject constructor(
         getUser()
     }
 
-    private fun getUser() {
+    fun getUser() {
         viewModelScope.launch {
             _user.emit(Resource.Loading())
         }
