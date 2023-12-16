@@ -42,15 +42,15 @@ jobs:
       - name: Upload App APK
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: SaKa
-          path: app/build/outputs/apk/debug/SaKa.apk
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Assemble Android Instrumented Unit Test
         run: ./gradlew assembleDebugAndroidTest
       - name: Upload Android Test APK
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: SaKa-androidTest
-          path: app/build/outputs/apk/androidTest/debug/SaKa-androidTest.apk
+          name: app-debug-androidTest
+          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 
   firebase-test:
     name: Run UI tests with Firebase Test Lab
@@ -61,19 +61,19 @@ jobs:
       - name: Download app APK
         uses: actions/download-artifact@v4
         with:
-          name: SaKa
-          path: app/build/outputs/apk/debug/SaKa.apk
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Download Android test APK
         uses: actions/download-artifact@v4
         with:
-          name: SaKa-androidTest
-          path: app/build/outputs/apk/androidTest/debug/SaKa-androidTest.apk
-#      - name: Run tests on Firebase Test Lab
-#        uses: asadmansr/Firebase-Test-Lab-Action@v1.0
-#        with:
-#          arg-spec: '.github/data/tests.yml:android-pixel-4'
-#        env:
-#          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+          name: app-debug-androidTest
+          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+      - name: Run tests on Firebase Test Lab
+        uses: asadmansr/Firebase-Test-Lab-Action@v1.0
+        with:
+          arg-spec: '.github/data/tests.yml:android-pixel-4'
+        env:
+          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
 
   release:
     name: Release Project
@@ -85,6 +85,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          files: app/build/outputs/apk/debug/SaKa.apk
+          files: app/build/outputs/apk/debug/app-debug.apk
           tag_name: ${{ github.run_number }}
           name: Release ${{ github.run_number }}
