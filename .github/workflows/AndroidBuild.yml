@@ -62,12 +62,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Download Android test APK
         uses: actions/download-artifact@v4
         with:
           name: app-debug-androidTest
-          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
       - name: Run tests on Firebase Test Lab
         uses: asadmansr/Firebase-Test-Lab-Action@v1.0
         with:
@@ -85,7 +83,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Create new release
         uses: softprops/action-gh-release@v1
         env:
