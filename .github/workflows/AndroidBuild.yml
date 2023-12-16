@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  unit-test:
     name: Unit Test
     runs-on: ubuntu-latest
     steps:
@@ -26,6 +26,7 @@ jobs:
   build:
     name: Generate APK
     runs-on: ubuntu-latest
+    needs: unit-test
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
@@ -58,13 +59,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.1
       - name: Download app APK
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Download Android test APK
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: app-debug-androidTest
+          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
       - name: Run tests on Firebase Test Lab
         uses: asadmansr/Firebase-Test-Lab-Action@v1.0
         with:
@@ -78,9 +81,10 @@ jobs:
     needs: build
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
       - name: Create new release
         uses: actions/create-release@v1
         env:

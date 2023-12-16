@@ -15,19 +15,3 @@ android-pixel-4:
       version: 28
       locale: 'en'
       orientation: portrait
-    - model: HWCOR
-      version: 27
-      locale: 'en'
-      orientation: portrait
-    - model: SOV33
-      version: 26
-      locale: 'en'
-      orientation: portrait
-    - model: mata
-      version: 25
-      locale: 'en'
-      orientation: portrait
-    - model: HWMHA
-      version: 24
-      locale: 'en'
-      orientation: portrait

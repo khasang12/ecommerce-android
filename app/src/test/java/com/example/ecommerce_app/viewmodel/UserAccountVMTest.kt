@@ -73,7 +73,7 @@ class UserAccountVMTest {
         `when`(mockFirestore.collection("user").document(any())).thenReturn(mock(DocumentReference::class.java))
         `when`(mockFirestore.collection("user").document(any()).get()).thenReturn(mockSuccessTask)
 
-        `when`(mockDocumentSnapshot.toObject(User::class.java)).thenReturn(mockUser)
+        lenient().`when`(mockDocumentSnapshot.toObject(User::class.java)).thenReturn(mockUser)
 
         viewModel = UserAccountViewModel(mockFirestore,mockAuth,mockStorageReference,mockApplication)
         reset(mockFirestore)
@@ -91,7 +91,7 @@ class UserAccountVMTest {
         `when`(mockFirestore.collection("user").document(any())).thenReturn(mock(DocumentReference::class.java))
         `when`(mockFirestore.collection("user").document(any()).get()).thenReturn(mockSuccessTask)
 
-        `when`(mockDocumentSnapshot.toObject(User::class.java)).thenReturn(mockUser)
+        lenient().`when`(mockDocumentSnapshot.toObject(User::class.java)).thenReturn(mockUser)
 
         // Call the function to test
         viewModel.getUser()
