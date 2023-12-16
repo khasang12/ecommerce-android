@@ -85,12 +85,12 @@ jobs:
           name: app-debug
       - name: Debug
         run: |
-          ls -al app-debug
+          ls -al
       - name: Create new release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          files: app-debug/app-debug.apk
+          files: app/build/outputs/apk/debug/app-debug.apk
           tag_name: ${{ github.run_number }}
           name: Release ${{ github.run_number }}
