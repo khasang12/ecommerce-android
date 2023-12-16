@@ -42,15 +42,15 @@ jobs:
       - name: Upload App APK
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: SaKa
+          path: app/build/outputs/apk/debug/SaKa.apk
       - name: Assemble Android Instrumented Unit Test
         run: ./gradlew assembleDebugAndroidTest
       - name: Upload Android Test APK
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: app-debug-androidTest
-          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+          name: SaKa-androidTest
+          path: app/build/outputs/apk/androidTest/debug/SaKa-androidTest.apk
 
   firebase-test:
     name: Run UI tests with Firebase Test Lab
@@ -61,13 +61,13 @@ jobs:
       - name: Download app APK
         uses: actions/download-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: SaKa
+          path: app/build/outputs/apk/debug/SaKa.apk
       - name: Download Android test APK
         uses: actions/download-artifact@v4
         with:
-          name: app-debug-androidTest
-          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+          name: SaKa-androidTest
+          path: app/build/outputs/apk/androidTest/debug/SaKa-androidTest.apk
 #      - name: Run tests on Firebase Test Lab
 #        uses: asadmansr/Firebase-Test-Lab-Action@v1.0
 #        with:
@@ -89,6 +89,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          files: app/build/outputs/apk/debug/app-debug.apk
+          files: app/build/outputs/apk/debug/SaKa.apk
           tag_name: ${{ steps.get_tag.outputs.TAG_NAME }}
-          release_name: Release ${{ github.run_number }}
+          name: Release ${{ github.run_number }}
