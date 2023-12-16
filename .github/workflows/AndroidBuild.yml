@@ -29,8 +29,8 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: Run tests on Firebase Test Lab
-          uses: asadmansr/Firebase-Test-Lab-Action@v1.0
-          with:
-            arg-spec: '.github/data/tests.yml:android-pixel-4'
-          env:
-            SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+        uses: asadmansr/Firebase-Test-Lab-Action@v1.0
+        with:
+          arg-spec: '.github/data/tests.yml:android-pixel-4'
+        env:
+          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
