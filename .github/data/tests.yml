@@ -1,8 +1,33 @@
 android-pixel-4:
   type: instrumentation
   app: app/build/outputs/apk/debug/app-debug.apk
+  test: app/build/outputs/apk/debug/app-debug-androidTest.apk
   device:
     - model: flame
+      version: 30
+      locale: 'en'
+      orientation: portrait
+    - model: x1q
       version: 29
+      locale: 'en'
+      orientation: portrait
+    - model: crownlte
+      version: 28
+      locale: 'en'
+      orientation: portrait
+    - model: HWCOR
+      version: 27
+      locale: 'en'
+      orientation: portrait
+    - model: SOV33
+      version: 26
+      locale: 'en'
+      orientation: portrait
+    - model: mata
+      version: 25
+      locale: 'en'
+      orientation: portrait
+    - model: HWMHA
+      version: 24
       locale: 'en'
       orientation: portrait

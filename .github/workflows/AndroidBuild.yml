@@ -7,27 +7,64 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  test:
+    name: Unit Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-
       - name: Setup Java JDK
         uses: actions/setup-java@v4.0.0
         with:
           java-version: '18'
           distribution: 'adopt'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Run Unit test
+        run: ./gradlew test
 
-      - name: Build with Gradle
-        run: ./gradlew build
-
-      - name: Upload a Build Artifact
+  build:
+    name: Generate APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          java-version: '18'
+          distribution: 'adopt'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Assemble App APK
+        run: ./gradlew assembleDebug
+      - name: Upload App APK
         uses: actions/upload-artifact@v4.0.0
         with:
-          name: SaKa.apk
+          name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Assemble Android Instrumented Unit Test
+        run: ./gradlew assembleDebugAndroidTest
+      - name: Upload Android Test APK
+        uses: actions/upload-artifact@v4.0.0
+        with:
+          name: app-debug-androidTest
+          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 
+  firebase-test:
+    name: Run UI tests with Firebase Test Lab
+    needs: build
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Download app APK
+        uses: actions/download-artifact@v3
+        with:
+          name: app-debug
+      - name: Download Android test APK
+        uses: actions/download-artifact@v3
+        with:
+          name: app-debug-androidTest
       - name: Run tests on Firebase Test Lab
         uses: asadmansr/Firebase-Test-Lab-Action@v1.0
         with:
@@ -43,22 +80,18 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: SaKa.apk
-#      - name: Archive site content
-#        uses: thedoctor0/zip-release@master
-#        with:
-#          filename: SaKa.zip
-      - name: Create GitHub release
+          name: app-debug
+      - name: Create new release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
           release_name: Release ${{ github.run_number }}
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
           asset_path: ./SaKa.apk

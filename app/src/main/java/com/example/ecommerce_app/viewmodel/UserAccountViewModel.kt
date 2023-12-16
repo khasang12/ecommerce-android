@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build.VERSION_CODES.P
 import android.provider.MediaStore
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommerce_app.data.User
@@ -44,7 +45,10 @@ class UserAccountViewModel @Inject constructor(
         viewModelScope.launch {
             _user.emit(Resource.Loading())
         }
-        firestore.collection("user").document(auth.uid!!).get()
+        firestore
+            .collection("user")
+            .document(auth.uid!!)
+            .get()
             .addOnSuccessListener {
                 val user = it.toObject(User::class.java)
                 user?.let {
