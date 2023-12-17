@@ -3,6 +3,35 @@
   <component name="AndroidTestResultsUserPreferences">
     <option name="androidTestResultsTableState">
       <map>
+        <entry key="-824963660">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="R5CW8188DSW" value="120" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung&#10; SM-A236E" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="-428871312">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="R5CW8188DSW" value="120" />
+                  <entry key="Tests" value="360" />
+                  <entry key="samsung" value="120" />
+                  <entry key="samsung&#10; SM-A236E" value="120" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-364945468">
           <value>
             <AndroidTestResultsTableState>
