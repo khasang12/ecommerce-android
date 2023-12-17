@@ -1,9 +1,13 @@
-android-pixel-4:
+mobile:
   type: instrumentation
   app: app-debug.apk
   test: app-debug-androidTest.apk
   device:
-    - model: flame
-      version: 30
+    - model: gts8uwifi
+      version: 33
+      locale: 'en'
+      orientation: portrait
+    - model: dreamlte
+      version: 28
       locale: 'en'
       orientation: portrait
