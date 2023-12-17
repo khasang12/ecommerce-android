@@ -66,6 +66,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-debug-androidTest
+      - name: Debug
+        run: |
+          ls -al
       - name: Run tests on Firebase Test Lab
         uses: asadmansr/Firebase-Test-Lab-Action@v1.0
         with:

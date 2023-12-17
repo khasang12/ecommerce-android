@@ -19,7 +19,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "com.example.ecommerce_app.HiltTestRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -89,6 +89,8 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
     debugImplementation("androidx.fragment:fragment-testing:1.6.2")
+    // Firebase TestLab
+    androidTestImplementation("com.google.firebase:testlab-instr-lib:0.2")
 
 
     apply plugin :"kotlin-kapt"
