@@ -32,7 +32,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/khasang12-khmt/ecommerce-android">
-    <img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/a3e59907-0c9e-4d2e-bffe-e56d4f1d8e8c" alt="Logo" width="160" height="160" style="border: 2px solid #000;">
+    <img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/a3e59907-0c9e-4d2e-bffe-e56d4f1d8e8c" alt="Logo" width="120" height="120" style="border: 2px solid #000;">
   </a>
 
 
@@ -55,8 +55,7 @@
 
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
+**Table of Contents**
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -78,32 +77,46 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
 
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<table>
+  <tr>
+    <td>Login Screen</td>
+     <td>Home Screen</td>
+     <td>Item Detail Screen</td>
+    <td>Cart Screen</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/33469b2d-713e-490a-8a6f-503c7636e65d" width=270 height=480></td>
+    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/c5bdd653-4118-4066-871e-b25115bfdb8f" width=270 height=480></td>
+    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/1a6c7383-13c6-489b-8517-f4d3dcfc1f0f" width=270 height=480></td>
+    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/b0ffa221-e5c7-4de7-8f64-950fa1ff99ef" width=270 height=480></td>
+  </tr>
+ </table>
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+A Native Android Mobile App that serves core e-commerce functions.
+* Login/ Logout/ Register
+* View Products by Category
+* Add Items to Cart
+* Create Order
+* View/ Modify Profile
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
-
+* Architecture Pattern: MVVM (Model-View-ViewModel) and DI (Hilt)
+* UI: XML Design
+* Serverless functions: Firebase (Firestore, Firebase DB, Firebase Auth)
+* 3rd-party Image Loader: Glide
+* Other: Flow, Coroutine
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
