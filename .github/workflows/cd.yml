@@ -41,8 +41,7 @@ jobs:
           name: SaKa-signed  # Artifact Name
           path: app/build/outputs/apk/release/*.apk
       - name: Debug
-          run: |
-            ls -al
+          run: ls -al
       - name: Create new release
         uses: softprops/action-gh-release@v1
         env:
@@ -59,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create service_account.json
-        run: echo '${{ secrets.SERVICE_ACCOUNT_JSON }}' > service_account.json
+        run: echo '${{ secrets.SERVICE_ACCOUNT }}' > service_account.json
 
       - name: Deploy to Play Store
         uses: r0adkll/upload-google-play@v1
