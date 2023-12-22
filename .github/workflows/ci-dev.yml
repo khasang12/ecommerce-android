@@ -1,10 +1,10 @@
-name: CI
+name: CI_DEV
 
 on:
   pull_request:
-    branches: [main]
+    branches: [deploy]
   push:
-    branches: [main,deploy]
+    branches: [deploy]
 
 jobs:
   start-ci:
