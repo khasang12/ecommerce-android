@@ -54,6 +54,7 @@ android {
 
 dependencies {
     implementation 'androidx.navigation:navigation-testing:2.7.6'
+    implementation 'com.google.firebase:firebase-perf:20.5.1'
     androidTestImplementation project(path: ':app')
     androidTestImplementation project(path: ':app')
     constraints {
