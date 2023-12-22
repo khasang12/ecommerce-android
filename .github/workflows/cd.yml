@@ -38,10 +38,12 @@ jobs:
       - name: Upload Signed APK
         uses: actions/upload-artifact@v2
         with:
-          name: SaKa-signed  # Artifact Name
+          name: SaKa-signed
           path: app/build/outputs/apk/release/*.apk
+
       - name: Debug
-          run: ls -al
+        run: ls -al
+
       - name: Create new release
         uses: softprops/action-gh-release@v1
         env:
