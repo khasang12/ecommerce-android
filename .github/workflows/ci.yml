@@ -86,29 +86,29 @@ jobs:
           name: app-debug-androidTest
           path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 
-#  instrumentation-test:
-#    name: Run UI tests with Firebase Test Lab
-#    needs: build
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v4.1.1
-#      - name: Download app APK
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: app-debug
-#      - name: Download Android test APK
-#        uses: actions/download-artifact@v4
-#        with:
-#          name: app-debug-androidTest
-#      - name: Debug
-#        run: |
-#          ls -al
-#      - name: Run tests on Firebase Test Lab
-#        uses: asadmansr/Firebase-Test-Lab-Action@v1.0
-#        with:
-#          arg-spec: '.github/data/tests.yml:mobile'
-#        env:
-#          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+  instrumentation-test:
+    name: Run UI tests with Firebase Test Lab
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Download app APK
+        uses: actions/download-artifact@v4
+        with:
+          name: app-debug
+      - name: Download Android test APK
+        uses: actions/download-artifact@v4
+        with:
+          name: app-debug-androidTest
+      - name: Debug
+        run: |
+          ls -al
+      - name: Run tests on Firebase Test Lab
+        uses: asadmansr/Firebase-Test-Lab-Action@v1.0
+        with:
+          arg-spec: '.github/data/tests.yml:mobile'
+        env:
+          SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
 
 #      static-code-analysis:
 #        name: Perform static code analysis
