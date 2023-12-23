@@ -78,6 +78,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+SaKa is a Native Android Mobile App that serves core e-commerce functions:
+* Login/ Logout/ Register
+* View Products by Category
+* Add Items to Cart
+* Create Order
+* View/ Modify Profile
+
 <table>
   <tr>
      <td>Home Screen</td>
@@ -85,20 +92,11 @@
     <td>Cart Screen</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/c5bdd653-4118-4066-871e-b25115bfdb8f" width=270 height=840></td>
-    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/1a6c7383-13c6-489b-8517-f4d3dcfc1f0f" width=270 height=840></td>
-    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/b0ffa221-e5c7-4de7-8f64-950fa1ff99ef" width=270 height=840></td>
+    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/c5bdd653-4118-4066-871e-b25115bfdb8f" width=270 height=540></td>
+    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/1a6c7383-13c6-489b-8517-f4d3dcfc1f0f" width=270 height=540></td>
+    <td><img src="https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/b0ffa221-e5c7-4de7-8f64-950fa1ff99ef" width=270 height=540></td>
   </tr>
  </table>
-
-A Native Android Mobile App that serves core e-commerce functions.
-* Login/ Logout/ Register
-* View Products by Category
-* Add Items to Cart
-* Create Order
-* View/ Modify Profile
-
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -106,7 +104,7 @@ A Native Android Mobile App that serves core e-commerce functions.
 
 ### Built With
 
-* Architecture Pattern: Pure MVVM (Model-View-ViewModel) and DI (Hilt)
+* Architecture Pattern: Pure MVVM (Model-View-ViewModel) and DI (Hilt) built in Kotlin
 * UI: XML Design
 * Serverless API: Firebase (Firestore, Firebase Storage, Firebase Auth)
 * 3rd-party Image Loader: Glide
@@ -115,15 +113,18 @@ A Native Android Mobile App that serves core e-commerce functions.
 ![68747470733a2f2f692e696d6775722e636f6d2f615148476d4b4d2e706e67](https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/e72f040a-57ee-4619-acf8-8f3611045479)
 
 ### Deploy With
+
+![1_ICOIFVTu5IlAZGGijYezkg](https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/3a115972-8f57-4429-9d5b-3d2d4d10f37b)
+
 * Unit Testing: JUnit5 and Mockito
 * Instrumentation Testing: Espresso, Hilt Test and Firebase Test Lab
-* Continuous Integration: Github Actions, SonarQube and its components to check if pushed version passed all testcases. Steps done:
+* Continuous Integration: Github Actions, SonarQube and its components to check if pushed version passes all testcases. Steps done:
   ![image](https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/7e54b9f2-6ac4-4712-b1ed-bc312a35603a)
 
 * Continuous Delivery: Github Actions and its components to build a signed APK/ABB, then deploy it to Google Play Store.
   ![image](https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/036b7265-0020-4b91-9aca-9021fdb9bbb1)
 
-![1_ICOIFVTu5IlAZGGijYezkg](https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/3a115972-8f57-4429-9d5b-3d2d4d10f37b)
+
 
 
 
@@ -137,11 +138,9 @@ A Native Android Mobile App that serves core e-commerce functions.
 - [x] Add CI
 - [x] Add CD
 - [ ] Add Architecture Design Explanation
-- [ ] Add Demo Video 
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] English
-    - [ ] Vietnamese
+- [ ] Add Demo Video
+- [ ] Add Dark Mode
+- [ ] Support Multi-languages
 
 See the [open issues](https://github.com/khasang12-khmt/ecommerce-android/issues) for a full list of proposed features (and known issues).
 
@@ -192,12 +191,6 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
