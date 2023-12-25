@@ -51,6 +51,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           files: app/build/outputs/apk/release/SaKa-signed.apk
+          tag_name: ${{ github.run_number }}
+          name: Release ${{ github.run_number }}
 
 
   deploy:
