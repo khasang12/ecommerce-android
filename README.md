@@ -66,11 +66,11 @@
         <li><a href="#deploy-with">CI/CD With</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#usage">Usage</a></li>
   </ol>
 
 
@@ -181,17 +181,6 @@ _Below is an example of how you can instruct your audience on installing and set
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>-->
 
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -225,6 +214,31 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Sang Kha - [@your_linkedin](https://www.linkedin.com/in/khasang12/) - khasang12@gmail.com
 
 Project Link: [https://github.com/khasang12-khmt/ecommerce-android](https://github.com/khasang12-khmt/ecommerce-android)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+### Authentication Flow
+Desc: Firebase Authentication to manage authority for all accounts.
+
+https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/19d88e82-9195-4c4c-a947-1c115c11e827
+
+### Shopping Flow
+Desc: Firebase Database to fetch all data, and I used Pagination technique to boost app response time.
+
+https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/94bfd4ab-cb77-43a6-92a9-47390d986f45
+
+### Order Flow
+Desc: Firebase Database Transaction to add data to multiple databases.
+
+https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/1ba3540f-2ec8-4202-810f-a80a5ff8f510
+
+### Profile Settings Flow
+Desc: Firebase Storage to Add/Edit Profile Image, and Firebase for other modified fields.
+
+https://github.com/khasang12-khmt/ecommerce-android/assets/80106348/b648b4a0-c828-43ef-b6c7-8caa045c2a0f
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
